@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- chamando os aqruivos de estilização -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class = "slide">
+
+    <div class = "introducao-texto fundos-texto">
+     <strong>D</strong>ocument<br>
+     <strong>O</strong>bject<br> 
+     <strong>M</strong>odel<br>    
+     <br>
+     Quando uma página é carregada, o navegador cria um <strong>DOM</strong> dessa página.
+     O DOM, por sua vez, define a estrutura lógica através da qual documentos podem ser acessados e manipulados!
+
+     <figure>
+         <img src="./imagens/DOM_ilustracao.png">
+        </figure>
+    </div>
+
+</div>
+<div class = "slide">
+    <p>Para realizar a manipulação do DOM, eu posso usar outras linguagens de programação junto ao HTML/XML. Uma das mais comuns utilizadas em páginas da web é o javascript.</p>
+    <p>Mas, é preciso ter noção da diferença entre DOM e Script. O DOM não existe através do script, mas é o script quem permite interação e modelagem do DOM, de forma a o tornar dinâmico</p>
+    <figure>
+    <img src = "./imagens/Objetos_Script.PNG">
+    </figure>
+</div>
+
+<div class = "slide">
+<p>Mas afinal, se o documento é o HTML é o documento, que contem os objetos, e o navegador permite que ele seja visualizado como um modelo que segue certo conjunto de lógicas, qual o nome do local onde o documento é exibido? </p>
+<figure>
+    <img src = "./imagens/document_window.png">
+</figure>
+<p>O objeto "window" tem característica global. Nele, está contido o documento. De fato, o comando "window.document" retorna o mesmo que apenas o comando "document", porque todo "document"'está, necessariamente, dentro do "window'.
+<br> Essa lógica também tem efeito sobre métodos presentes no script usado para manipular o DOM!</p>
+
+</div>
+<div class = "slide">
+    <figure>
+        <img src = "./imagens/metodos_globais.png">
+    </figure>
+</div>
+
+<div class = "slide">
+    <div class = "elemento-local">Eu existo no documento!! Eu existo dentro do HTML, sou parte do DOM, e posso ser acessado a manipulado :) Mas só se o script me encontrar</div>
+    <figure>
+        <img src = "./imagens/metodos_locais.png">
+    </figure>
+    <p></p>
+</div>
+<div class = "slide exemplos-elementos">
+
+    <div id="esse-tem-id" class = "identificacao"> 
+        Esse elemento recebeu uma id e uma classe</div>
+
+    <div id = "esse-so-tem-id">
+        Esse elemento recebeu só uma id, sem classe</div>
+
+    <div class = "identificacao">
+        Esse elemento não tem nenhuma classe especial</div>
+
+    <div class = "identificacao especial">
+        Esse elemento recebeu uma classe identificadora</div>
+    
+    <div id= "resultados"></div> 
+
+</div>
+<div class = "slide">
+    <p>
+    Cada um dos elementos criados no documento e exibidos na janela do meu navegador recebeu uma construção diferente. Dentro das construção, estão alguns identificadores, que permitem que o script os encontre</p>
+    <figure>
+        <img src = "./imagens/ID_CLASSE.png">
+    </figure>
+    <p>Primeiro, temos maneiras de encontrar elementos singularmente, pelo ID ou pela classe. Contudo, pela classe, usando o querySelector, será retornado o primeiro elemento com a classe procurada no documento, o que pode não ser tão prático</p>
+</div>
+<div class = "slide">Mas então, se eu quiser mais de um elemento dentro do documento, como devo fazer?
+    <figure>
+        <img src = "./imagens/htmlColletion_nodeList.png">
+    </figure>
+</div>
+<div class = "slide"> <p>Como se pode ver na figura anterior, ainda que eles APARENTEMENTE tragam a mesma informaçào, ela é apresentada de forma diferente. Isso porque uma delas é criada e apresentada de forma dinâmica para com o DOM, para com o HTML e a outra, não. Se for feita uma alteração, por exemplo</p>
+<figure>
+    <img src = "./imagens/aletrando_a_DOM.png">
+</figure></div>
+<div class = "slide">
+    <p>Alterações feitas dentro dos elementos que já foram computados são vistas usando qualquer um dos métodos, contudo, alterações na DOM, ou seja, a inclusão de um elemento inteiro novo, só é percebida pelo método dinâmico</p>
+    <figure>
+        <img src = "./imagens/dinamico_estaticos.png"> 
+    </figure>
+</div>
+<div class = "slide nodeList-array">
+    <p>Ainda falando sobre a listagem de elementos, deve-se notas que foi feita a diferença entre HTMLColletion e entre a NodeList mas, se formos ver a função usada para imprimir cada um dos elementos obtidos pela busca de classe, ambos foram tratados como se fossem arrays. Mas o fato é que eles não são. </p>
+    <figure>
+        <img src = "./imagens/nodeArray1.png">
+    </figure>
+    <p>Com isso, é possível fazer operações na NodeList como se ela fosse uma Array, mas deve-se notar que isso não significa que essa array "artificial" é de fato uma array, ou mesmo que ela é exatamente igual à NodeList.</p>
+    <figure>
+        <img src = "./imagens/nodeArray2.png">
+    </figure>
+</div>
+
+<div class = "slide espaco-impressao">
+    <p>Até agora foram usados métodos como "innerHTML" e "innerText", mas qual a diferença entre eles?</p>
+    <p>Suponha o texto abaixo, apesar da forma apresentada no navegador, cortesia do DOM, ele está bem diferente no HTML e, como consequência, se for chamado por métodos diferentes dentro do script, ele trará resultados diferentes.</p>
+
+
+<div class = "impressao-texto">
+<p>     Esse é um texto onde       
+    
+    
+    <em>algumas</em> coisas                <span>       
+    
+    
+    acontecem </span>                   nem todas 
+    
+    
+    <strong>esperadas                         </strong></p>
+
+
+</div>
+<figure>
+    <img src = "./imagens/textoVisivel_Literal.png">
+</figure>
+</div>
+<div class = "slide">
+    <p>Mas não é só no console que as diferenças aparecem. De fato, apesar de todos os três resultados trazerem strings, são string completamente diferentes. O número de caractéres e, consequentemente, o posicionamento deles dentro da string muda, o que deve ser levado em conta para se realizar a manipulação dos elementos</p>
+    <figure>
+        <img src = "./imagens/diferencas_contagenm_string.png"> 
+    </figure>
+</div>
+<div class = "slide">
+    <p>Talvez ainda não tenha ficado claro, mas todas as manipulações e explicações feitas até agora foram realizadas usando "elementos" dentro do JavaScript. Não por acaso temos a função "get<em>Element</em>ById", por exemplo.
+    Contudo, deve-se notar que os elementos são um tipo específico de conteúdo, de nó dentro de uma nodeList, o qual pode ser especificado diretamente no HTML e ter propriedades como o id, a classe, filhos e parentes. </p>
+    <p>Elementos são apenas um dos tipos de Nodes ou Nós que compõem um documento.</p>
+    <p>Resumindo:<br>
+        <ul>
+    <li>"Node" é qualquer tipo de objeto dentro da DOM. Toda webPage é feita por vários Nodes</li>
+    <li>"Element" é um tipo específico de Node</li>
+</ul>
+</p>
+
+
+    <p>Contudo, ainda que possamos obter pelo script elementos já declarados no HTML e organizados pela DOM, como seria a criação de elementos completamente novos dentro do script?</p>
+</div>
+<div class = "slide impressao-elementos">
+    <p>Aqui estão alguns elementos e nodes criados pelo script, de diferentes formas e com diferentes resultados:</p> 
+    <figure>
+        <img src = "./imagens/criando_elementos.png">
+    </figure>
+</div>
+
+<div class = "slide">
+    <p>E agora, deve-se lembrar que a DOM tem regras lógicas próprias que devem ser respeitadas na manipulação e obtenção dos objetos contidos no documento para a correta apresentação do modelo. Uma delas, se apresenta no uso do método append.Child. Se a "child" a ser adicionada ao elemento for apenas texto, por exemplo, ela preferencialmente será adicionada dentro de uma tag de texto, como "p" ou "span"</p>
+    <figure>
+        <img src = "./imagens/alterando_elementos.png">
+    </figure>
+</div>
+<div class = "slide">
+    <p>E ai em diante entra a manipulação de nodes e nodeLists, além das relações de parentesco entre os elementos e as outras nodes, com "children" e "parent", por exemplo. Mas, deve-se levar em conta, considerando o que foi até aqui apresentado, que diferentes formas de se "chamar" um mesmo conteúdo trarão resultados diferentes. Por isso, é necessária atençào e conhecimento ao realizar as manipulações desejadas</p>
+    <figure>
+        <img src = "./imagens/alterando_elementos2.png">
+    </figure>
+</div>
+<script src='script.js'></script>
+</body>
+</html>
